@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Letter Cards</title>
+        <script src="jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+        
+        <script type="text/javascript">
+
+            var currentLetter;
+                    
+            $.jQTouch({
+                icon: 'img/icon.png',
+                startupScreen: 'img/startup.png'
+            });
+            
+            $(function(){
+                
+                newLetter();
+                $('#letter').innerHTML = currentLetter;
+                
+            });
+        
+
+            function newLetter() {
+                
+                var letter = '';
+                while((letter = String.fromCharCode(65 + Math.round(Math.random() * 25))) != currentLetter) {
+                    // pick until we have a different letter
+                    ;
+                }
+                currentLetter = letter;
+                
+                
+                // random lower case
+                //var letter =  String.fromCharCode(97 + Math.round(Math.random() * 25));
+
+            }
+        
+        </script>
+    </head>
+    
+    <body>
+        
+        <div id='main'>
+            <span id='letter'></span>
+        </div>
+        
+    </body>
+
+
+</html>
