@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="lettercards.css" />
         
         <script src="jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jquery.swipe-0.2.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript">
 
@@ -23,6 +24,16 @@
             //     touchSelector: '#swipeme',
             //     initializeTouch: 'body, main'
             //     
+            // });
+            $(document).ready(function() {
+				$('.swipe').swipe({
+				    swipeLeft: next,
+				    swipeRight: prev
+				});
+			});
+            // $('.swipe').swipe({
+            //      swipeLeft: function() { alert("left!") },
+            //      swipeRight: function() { alert("right!") }
             // });
             
             var currentLetter = '';
@@ -61,18 +72,34 @@
                 // Prevent scrolling on this element
                 //event.preventDefault();
             }
+            
+            function changeCase() {
+                
+            }
         
         </script>
     </head>
     
-    <body ontouchmove="touchMove(event);">
+    <body> <!--ontouchmove="touchMove(event);"-->
 
-        <div class='main'>
-            <div class='letter' id='letter'></div>
+        <div class="main swipe">
+            <div class="letter" id="letter"></div>
         </div>
-        
-        <div class='controls'>
+
+<!--        
+        <div class="controls swipe">
             <a href="javascript:prev();">Previous</a>&nbsp;&nbsp;<a href="javascript:next();">Next</a>
+            Swipe here.
+        </div>
+-->        
+        
+        <div id="settings" style="display:none">
+            <label for="lettertype">Letter Case:</label>
+            <select name="lettertype" onchange="javascript:changeCase()">
+                <option value="upper">Upper Case</option>
+                <option value="lower">Lower Case</option>
+                <option value="both">Upper and Lower Case</option>
+            </select>
         </div>
     </body>
 
