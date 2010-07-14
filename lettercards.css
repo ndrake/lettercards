@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+}
+
+.main {
+    background:#eaeaea;
+    font-size:80px;
+    
+}
+
+.main .letter {
+    color: red;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
