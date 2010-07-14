@@ -1,4 +1,4 @@
-<html>
+<html manifest="lettercards.manifest">
     <head>
         <meta charset="UTF-8"/>
         <title>Letter Cards</title>
@@ -9,6 +9,7 @@
         
         <link rel="stylesheet" type="text/css" href="lettercards.css" />
         
+
         <script src="jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="jquery.swipe-0.2.js" type="text/javascript" charset="utf-8"></script>
         
@@ -25,35 +26,58 @@
             //     initializeTouch: 'body, main'
             //     
             // });
+            
             $(document).ready(function() {
 				$('.swipe').swipe({
+				    y: 20,
 				    swipeLeft: next,
 				    swipeRight: prev
 				});
 			});
-            // $('.swipe').swipe({
-            //      swipeLeft: function() { alert("left!") },
-            //      swipeRight: function() { alert("right!") }
-            // });
+
             
             var currentLetter = '';
             var previousLetters = [];
             
+            var UPPER = 0;
+            var LOWER = 1;
+            var BOTH = 2;
+            
+            var caseSetting = UPPER;
+            
+            function randomUpper() {
+                return String.fromCharCode(65 + Math.round(Math.random() * 25));
+            }
+            
+            function randomLower() {
+                return String.fromCharCode(97 + Math.round(Math.random() * 25));
+            }
+            
+            function randomLetter() {
+                if(caseSetting == UPPER) {
+                    return randomUpper();
+                } else if( caseSetting == LOWER ) {
+                    return randomLower();                
+                } else {
+                    if( Math.floor(10*Math.random()) % 2 == 0) {
+                        return randomUpper();
+                    } else {
+                        return randomLower();
+                    }
+                }
+            }
+            
             function newLetter() {
 
                 var letter = '';
-                 while((letter = String.fromCharCode(65 + Math.round(Math.random() * 25))) == currentLetter) {
+                 while((letter = randomLetter()) == currentLetter) {
                      // pick until we have a different letter
                      ;
                 }
                 currentLetter = letter;
                 
-                // random lower case
-                //var letter =  String.fromCharCode(97 + Math.round(Math.random() * 25));
-
-                
-
             }
+            
             function next() {
                 if(currentLetter)
                     previousLetters.push(currentLetter);
@@ -71,16 +95,36 @@
             function touchMove(event) {
                 // Prevent scrolling on this element
                 //event.preventDefault();
+                // <!--ontouchmove="touchMove(event);"-->
             }
             
-            function changeCase() {
-                
+            function showSettings() {
+                $('.main').hide();
+                $('#settings').show();
             }
+            
+            function hideSettings() {
+                // Save settings
+                alert($('#lettertype').val());
+                
+                caseSetting = $('#lettertype').val();
+                
+                                
+                $('#settings').hide();                
+                $('.main').show();
+            }
+            
         
         </script>
     </head>
     
-    <body> <!--ontouchmove="touchMove(event);"-->
+    <body> 
+
+        <div id="info" onclick="javascript:showSettings();">
+            <div style="background: url('img/white_rollie.png') no-repeat top left;">
+                <img src="img/black_i.png" />
+            </div>
+        </div>
 
         <div class="main swipe">
             <div class="letter" id="letter"></div>
@@ -95,11 +139,13 @@
         
         <div id="settings" style="display:none">
             <label for="lettertype">Letter Case:</label>
-            <select name="lettertype" onchange="javascript:changeCase()">
-                <option value="upper">Upper Case</option>
-                <option value="lower">Lower Case</option>
-                <option value="both">Upper and Lower Case</option>
+            <select id="lettertype" name="lettertype">
+                <option value="0">Upper Case</option>
+                <option value="1">Lower Case</option>
+                <option value="2">Upper and Lower Case</option>
             </select>
+            <br/>
+            <button type="button" onclick="javascript:hideSettings()">Done</button>
         </div>
     </body>
 

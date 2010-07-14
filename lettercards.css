@@ -28,11 +28,24 @@ a:active {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Ar
 a:hover {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
 }
 
+#info {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 13px;
+    height: 13px;
+}
+
+
 .main {
     text-align: center;
     width: 100%;
     height: 90%;
     vertical-align: center;
+}
+
+#settings {
+    font-size: 12px;
 }
 
 .controls {
