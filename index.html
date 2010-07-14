@@ -35,22 +35,26 @@
                      // pick until we have a different letter
                      ;
                 }
-                if(currentLetter)
-                    previousLetters.push(currentLetter);
                 currentLetter = letter;
                 
                 // random lower case
                 //var letter =  String.fromCharCode(97 + Math.round(Math.random() * 25));
 
-                $('#letter').html(currentLetter);
+                
 
             }
             function next() {
-                newLetter();
+                if(currentLetter)
+                    previousLetters.push(currentLetter);
+                    
+                newLetter();                
+                
+                $('#letter').html(currentLetter);
             }
             
             function prev() {
-                alert("back!");
+                var l = previousLetters.pop();
+                $('#letter').html(l);
             }
             
             function touchMove(event) {
