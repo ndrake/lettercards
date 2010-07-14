@@ -1,22 +1,42 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+html {
+	background: black;
+}    	
+
+/* Colors from Alligator Eraser theme: http://kuler.adobe.com/#themeID/953690 */
 body {
-    font-family: "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+	background: #384C3A;
+	color: #D97C71;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 460px;
+	max-height: 460px;
+    text-align: center;
+    font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+    font-size: 21em;
+    
+	-webkit-text-size-adjust: none; 
+	-webkit-tap-highlight-color: transparent;
+}
+
+a:link {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+}
+a:visited {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+}
+a:active {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+}
+a:hover {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
 }
 
 .main {
-    background:#eaeaea;
-    font-size:80px;
-    
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    vertical-align: center;
 }
 
-.main .letter {
-    color: red;
+.controls {
+    font-size: 40px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
+    vertical-align: bottom;
 }
