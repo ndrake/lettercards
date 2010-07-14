@@ -27,7 +27,18 @@
             //     
             // });
             
+            var desktop = false;
+            
             $(document).ready(function() {
+                
+                // Look for iPhone OS
+        		if (navigator.appVersion.indexOf('iPhone OS ') < 0 && navigator.appVersion.indexOf('iPad') < 0)
+        		{
+        		    desktop = true;
+        			$('#controls').show();
+        		}
+        		
+                
 				$('.swipe').swipe({
 				    y: 20,
 				    swipeLeft: next,
@@ -100,18 +111,26 @@
             
             function showSettings() {
                 $('.main').hide();
+                $('#info').hide();
+
+                if(desktop) {
+                    $('#controls').hide();
+                }
+                
                 $('#settings').show();
             }
             
             function hideSettings() {
-                // Save settings
-                alert($('#lettertype').val());
-                
+                // Save settings                
                 caseSetting = $('#lettertype').val();
                 
                                 
                 $('#settings').hide();                
                 $('.main').show();
+                $('#info').show();
+                if(desktop) {
+                    $('#controls').show();
+                }
             }
             
         
@@ -130,12 +149,11 @@
             <div class="letter" id="letter"></div>
         </div>
 
-<!--        
-        <div class="controls swipe">
-            <a href="javascript:prev();">Previous</a>&nbsp;&nbsp;<a href="javascript:next();">Next</a>
-            Swipe here.
+
+        <!-- Controls for desktop browsers -->
+        <div id="controls" style="display:none">
+            <a href="javascript:prev();">Previous</a>&nbsp;&nbsp;<a href="javascript:next();">Next</a>            
         </div>
--->        
         
         <div id="settings" style="display:none">
             <label for="lettertype">Letter Case:</label>

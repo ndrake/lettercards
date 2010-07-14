@@ -19,6 +19,14 @@ body {
 	-webkit-tap-highlight-color: transparent;
 }
 
+select {
+	font-size: 16px;
+}
+
+select {
+    font-size: 16px;
+}
+
 a:link {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
 }
 a:visited {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
@@ -48,7 +56,7 @@ a:hover {text-decoration: none; color: #D97C71; font-family: Verdana,Courier,Ari
     font-size: 12px;
 }
 
-.controls {
+#controls {
     font-size: 40px;
     text-align: center;
     vertical-align: bottom;
