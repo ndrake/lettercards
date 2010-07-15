@@ -122,8 +122,7 @@
             
             function hideSettings() {
                 // Save settings                
-                caseSetting = $('#lettertype').val();
-                
+                caseSetting = $('#lettertype').val                
                                 
                 $('#settings').hide();                
                 $('.main').show();
@@ -139,7 +138,7 @@
     
     <body> 
 
-        <div id="info" onclick="javascript:showSettings();">
+        <div id="info" onclick="showSettings();">
             <div style="background: url('img/white_rollie.png') no-repeat top left;">
                 <img src="img/black_i.png" />
             </div>
@@ -152,7 +151,7 @@
 
         <!-- Controls for desktop browsers -->
         <div id="controls" style="display:none">
-            <a href="javascript:prev();">Previous</a>&nbsp;&nbsp;<a href="javascript:next();">Next</a>            
+            <span onclick="prev();">Previous</span>&nbsp;&nbsp;<span onclick="next();">Next</span>
         </div>
         
         <div id="settings" style="display:none">
@@ -163,7 +162,7 @@
                 <option value="2">Upper and Lower Case</option>
             </select>
             <br/>
-            <button type="button" onclick="javascript:hideSettings()">Done</button>
+            <button type="button" onclick="hideSettings();">Done</button>
         </div>
     </body>
 
