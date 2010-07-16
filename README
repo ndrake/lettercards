@@ -2,5 +2,9 @@ h1. Letter Cards
 
 h2. Overview
 
-Letter Cards is a simple offline web app that displays random letters.  
+Letter Cards is a simple offline mobile iPhone web app that displays random letters.  
 
+h2. TODO
+
+* Better (and cross platform) swipe support
+* Pick a better font
