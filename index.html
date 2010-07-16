@@ -27,17 +27,39 @@
             //     
             // });
             
+            var UPPER = 0;
+            var LOWER = 1;
+            var BOTH = 2;
+            
+            var currentLetter = '';
+            var previousLetters = [];
+
+            // Settings defaults 
+            var caseSetting = UPPER;            
             var desktop = false;
+            var showControls = false;
             
             $(document).ready(function() {
                 
-                // Look for iPhone OS
+                // Read in settings
+                if(localStorage.caseSetting) {
+                    caseSetting = localStorage.caseSetting;
+                }
+                    
+                if(localStorage.showControls) {
+                    showControls = localStorage.showControls;
+                }
+                
+                // Desktop?
         		if (navigator.appVersion.indexOf('iPhone OS ') < 0 && navigator.appVersion.indexOf('iPad') < 0)
         		{
         		    desktop = true;
         			$('#controls').show();
         		}
         		
+        		if(showControls) {
+        		    $('#controls').show();
+        		}
                 
 				$('.swipe').swipe({
 				    y: 20,
@@ -46,16 +68,6 @@
 				});
 			});
 
-            
-            var currentLetter = '';
-            var previousLetters = [];
-            
-            var UPPER = 0;
-            var LOWER = 1;
-            var BOTH = 2;
-            
-            var caseSetting = UPPER;
-            
             function randomUpper() {
                 return String.fromCharCode(65 + Math.round(Math.random() * 25));
             }
@@ -113,21 +125,32 @@
                 $('.main').hide();
                 $('#info').hide();
 
-                if(desktop) {
+                if(desktop || showControls) {
                     $('#controls').hide();
                 }
+
+                if(showControls == 'true') {
+                    $('input[name=showcontrols]').attr('checked', true);
+                }
+                
+                $('#lettertype option[value=' + caseSetting + ']').attr('selected', true);
+
                 
                 $('#settings').show();
             }
             
             function hideSettings() {
                 // Save settings                
-                caseSetting = $('#lettertype').val                
-                                
+                caseSetting = $('#lettertype').val();
+                showControls = $('input[name=showcontrols]').is(':checked');
+                
+                localStorage.caseSetting = caseSetting;
+                localStorage.showControls = showControls;
+                                                                
                 $('#settings').hide();                
                 $('.main').show();
                 $('#info').show();
-                if(desktop) {
+                if(desktop || showControls) {
                     $('#controls').show();
                 }
             }
@@ -161,6 +184,9 @@
                 <option value="1">Lower Case</option>
                 <option value="2">Upper and Lower Case</option>
             </select>
+            <br/>
+            <label for="showcontrols">Show Controls:</label>
+            <input type="checkbox" name="showcontrols" value="Show Controls"/>
             <br/>
             <button type="button" onclick="hideSettings();">Done</button>
         </div>
