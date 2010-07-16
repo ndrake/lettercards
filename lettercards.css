@@ -1,25 +1,31 @@
 html {
-	background: black;
+    background: #78C6FA;
 }    	
 
-/* Colors from Alligator Eraser theme: http://kuler.adobe.com/#themeID/953690 */
-body {
-	background: #384C3A;
-	color: #D97C71;
+/* Colors from Alligator Eraser theme: http://kuler.adobe.com/#themeID/953690 
+ * 	background: #384C3A;
+ *	color: #D97C71;
+ */
+
+body {	
+	color: #000000;
 	padding: 0;
 	margin: 0;
-	width: 100%;
+	width: 99%;
 	height: 460px;
 	max-height: 460px;
     text-align: center;
     font-family: Verdana,Courier,Arial,"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
     font-size: 21em;
-    
 	-webkit-text-size-adjust: none; 
 	-webkit-tap-highlight-color: transparent;
 }
 
-select {
+input {
+	font-size: 16px;
+}
+
+button {
 	font-size: 16px;
 }
 
