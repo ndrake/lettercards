@@ -49,15 +49,12 @@
         			$('#controls').show();
         		}
         		
-        		if(showControls) {
-        		    $('#controls').show();
-        		}
         		
         		next();
                 
 			});
 			
-            $('#settings-page' ).live( 'pageinit',function(event){
+            $('#settings-page' ).live( 'pageshow',function(event){
                 if(showControls == 'true') {
                     $('input[name=showcontrols]').attr('checked', true);
                 }
@@ -66,14 +63,15 @@
 
             });			
             
-            $('#settings-page').live('pageremove', function(event) {
+            $('#settings-page').live('pagebeforehide', function(event) {
                 caseSetting = $('#lettertype').val();
                 showControls = $('input[name=showcontrols]').is(':checked');
+                console.log("saving show controls: " + showControls);
                 
                 localStorage.caseSetting = caseSetting;
                 localStorage.showControls = showControls;                
             });
-        
+            
 
             function randomUpper() {
                 return String.fromCharCode(65 + Math.round(Math.random() * 25));
@@ -108,12 +106,21 @@
                 
             }
             
+            $('#main').live('pagebeforeshow', function() {
+                console.log("pagebeforeshow!");
+                console.log("show controls? " + showControls);
+               	if(showControls) {
+        		    $('#controls').show();
+        		} else {
+        		    $('#controls').hide();
+        		}     	 
+            });
             
-            $('#main').live("swipeleft", function(){
+            $('#main').live('swipeleft', function(){
                 next();
             });
 
-            $('#main').live("swiperight", function(){
+            $('#main').live('swiperight', function(){
                 prev();
             });
             
