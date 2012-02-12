@@ -7,11 +7,15 @@
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                
+    	<link rel="stylesheet" href="jquery.mobile-1.0.1.min.css" />
+    	<script src="jquery-1.6.4.min.js"></script>
+    	<script src="jquery.mobile-1.0.1.min.js"></script>        
+        
         
         <link rel="stylesheet" type="text/css" href="lettercards.css" />
         <link rel="apple-touch-icon" href="img/apple-touch-icon.png"/>
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script src="jquery.swipe-0.2.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript">
@@ -150,35 +154,52 @@
     
     <body> 
 
-        <div id="info" onclick="showSettings();">
-            <div style="background: url('img/white_rollie.png') no-repeat top left;">
-                <img src="img/black_i.png" />
+        <div data-role="page">
+            
+            <div data-role="content">	
+                <div id="info">
+                    <div style="background: url('img/white_rollie.png') no-repeat top left;">
+                        <a href="#settings-page"><img src="img/black_i.png" /></a>
+                    </div>
+                </div>
+
+                <div class="main swipe">
+                    <div class="letter" id="letter"></div>
+                </div>
+                
+                <!-- Controls for desktop browsers -->
+                <div id="controls" style="display:none">
+                    <span onclick="prev();">Previous</span>&nbsp;&nbsp;<span onclick="next();">Next</span>
+                </div>
+                
+            </div>            
+            
+        </div>
+
+        <div data-role="page" id="settings-page" data-add-back-btn="true">
+            
+            <div data-role="header" >
+                <h2>Settings</h2>
             </div>
-        </div>
-
-        <div class="main swipe">
-            <div class="letter" id="letter"></div>
-        </div>
-
-
-        <!-- Controls for desktop browsers -->
-        <div id="controls" style="display:none">
-            <span onclick="prev();">Previous</span>&nbsp;&nbsp;<span onclick="next();">Next</span>
-        </div>
+            
+            <div data-role="content">	
         
-        <div id="settings" style="display:none">
-            <label for="lettertype">Letter Case:</label>
-            <select id="lettertype" name="lettertype">
-                <option value="0">Upper Case</option>
-                <option value="1">Lower Case</option>
-                <option value="2">Upper and Lower Case</option>
-            </select>
-            <br/>
-            <label for="showcontrols">Show Controls:</label>
-            <input type="checkbox" name="showcontrols" value="Show Controls"/>
-            <br/>
-            <button type="button" onclick="hideSettings();">Done</button>
-        </div>
+                <div id="settings" style="display:none">
+                    <label for="lettertype">Letter Case:</label>
+                    <select id="lettertype" name="lettertype">
+                        <option value="0">Upper Case</option>
+                        <option value="1">Lower Case</option>
+                        <option value="2">Upper and Lower Case</option>
+                    </select>
+                    <br/>
+                    <label for="showcontrols">Show Controls:</label>
+                    <input type="checkbox" name="showcontrols" value="Show Controls"/>
+                    <br/>
+                </div>
+                
+            </div>
+            
+            
     </body>
 
 
