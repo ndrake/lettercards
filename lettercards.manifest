@@ -3,8 +3,9 @@ CACHE MANIFEST
 # Version 0.1
 
 index.html
-http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js
-jquery.swipe-0.2.js
+jquery-1.6.4.min.js
+jquery-mobile-1.0.1.min.css
+jquery-mobile-1.0.1.min.js
 lettercards.css
 images/black_i.png
 images/icon.png

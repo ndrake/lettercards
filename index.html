@@ -15,8 +15,6 @@
         
         <link rel="stylesheet" type="text/css" href="lettercards.css" />
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
-
-        <script src="jquery.swipe-0.2.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript">
 
@@ -31,6 +29,7 @@
             var caseSetting = UPPER;            
             var desktop = false;
             var showControls = false;
+            
             
             $(document).ready(function() {
                 
@@ -54,12 +53,25 @@
         		    $('#controls').show();
         		}
                 
-				$('.swipe').swipe({
-				    y: 20,
-				    swipeLeft: next,
-				    swipeRight: prev
-				});
 			});
+			
+            $('#settings-page' ).live( 'pageinit',function(event){
+                if(showControls == 'true') {
+                    $('input[name=showcontrols]').attr('checked', true);
+                }
+                
+                $('#lettertype option[value=' + caseSetting + ']').attr('selected', true);
+
+            });			
+            
+            $('#settings-page').live('pageremove', function(event) {
+                caseSetting = $('#lettertype').val();
+                showControls = $('input[name=showcontrols]').is(':checked');
+                
+                localStorage.caseSetting = caseSetting;
+                localStorage.showControls = showControls;                
+            });
+        
 
             function randomUpper() {
                 return String.fromCharCode(65 + Math.round(Math.random() * 25));
@@ -94,6 +106,16 @@
                 
             }
             
+            
+            $('#main').live("swipeleft", function(){
+                next();
+            });
+
+            $('#main').live("swiperight", function(){
+                prev();
+            });
+            
+            
             function next() {
                 if(currentLetter)
                     previousLetters.push(currentLetter);
@@ -114,47 +136,47 @@
                 // <!--ontouchmove="touchMove(event);"-->
             }
             
-            function showSettings() {
-                $('.main').hide();
-                $('#info').hide();
-
-                if(desktop || showControls) {
-                    $('#controls').hide();
-                }
-
-                if(showControls == 'true') {
-                    $('input[name=showcontrols]').attr('checked', true);
-                }
-                
-                $('#lettertype option[value=' + caseSetting + ']').attr('selected', true);
-
-                
-                $('#settings').show();
-            }
-            
-            function hideSettings() {
-                // Save settings                
-                caseSetting = $('#lettertype').val();
-                showControls = $('input[name=showcontrols]').is(':checked');
-                
-                localStorage.caseSetting = caseSetting;
-                localStorage.showControls = showControls;
-                                                                
-                $('#settings').hide();                
-                $('.main').show();
-                $('#info').show();
-                if(desktop || showControls) {
-                    $('#controls').show();
-                }
-            }
-            
+            // function showSettings() {
+            //     $('.main').hide();
+            //     $('#info').hide();
+            // 
+            //     if(desktop || showControls) {
+            //         $('#controls').hide();
+            //     }
+            // 
+            //     if(showControls == 'true') {
+            //         $('input[name=showcontrols]').attr('checked', true);
+            //     }
+            //     
+            //     $('#lettertype option[value=' + caseSetting + ']').attr('selected', true);
+            // 
+            //     
+            //     $('#settings').show();
+            // }
+            // 
+            // function hideSettings() {
+            //     // Save settings                
+            //     caseSetting = $('#lettertype').val();
+            //     showControls = $('input[name=showcontrols]').is(':checked');
+            //     
+            //     localStorage.caseSetting = caseSetting;
+            //     localStorage.showControls = showControls;
+            //                                                     
+            //     $('#settings').hide();                
+            //     $('.main').show();
+            //     $('#info').show();
+            //     if(desktop || showControls) {
+            //         $('#controls').show();
+            //     }
+            // }
+            // 
         
         </script>
     </head>
     
     <body> 
 
-        <div data-role="page">
+        <div data-role="page" id="main">
             
             <div data-role="content">	
                 <div id="info">
