@@ -6,8 +6,11 @@ index.html
 http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js
 jquery.swipe-0.2.js
 lettercards.css
-img/black_i.png
-img/icon.png
-img/startup.png
-img/white_rollie.png
-img/apple-touch-icon.png
+images/black_i.png
+images/icon.png
+images/startup.png
+images/white_rollie.png
+images/apple-touch-icon.png
+images/icons-18-black.png
+images/icons-18-white.png
+images/ajax-loader.png
