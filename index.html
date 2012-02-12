@@ -52,6 +52,8 @@
         		if(showControls) {
         		    $('#controls').show();
         		}
+        		
+        		next();
                 
 			});
 			
@@ -179,11 +181,6 @@
         <div data-role="page" id="main">
             
             <div data-role="content">	
-                <div id="info">
-                    <div style="background: url('images/white_rollie.png') no-repeat top left;">
-                        <a href="#settings-page"><img src="images/black_i.png" /></a>
-                    </div>
-                </div>
 
                 <div class="main swipe">
                     <div class="letter" id="letter"></div>
@@ -194,7 +191,12 @@
                     <span onclick="prev();">Previous</span>&nbsp;&nbsp;<span onclick="next();">Next</span>
                 </div>
                 
-            </div>            
+            </div>        
+            
+            <div data-role="footer"  class="ui-bar">
+                
+                <a href="#settings-page" data-role="button" style="float: right; margin-right: 27px;" data-position="inline"  data-icon="gear" data-iconpos="notext" class="ui-btn-right"></a>
+            </div>
             
         </div>
 
